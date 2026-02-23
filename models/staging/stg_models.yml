@@ -1,0 +1,150 @@
+version: 2
+
+models:
+  # ==========================================
+  # STAGING CRM
+  # ==========================================
+  - name: stg_crm__contactos
+    description: "Lista maestra de contactos del CRM. Texto en UPPER/TRIM y fechas convertidas."
+    columns:
+      - name: crm_contacto_id
+        tests:
+          - unique
+          - not_null
+      - name: email
+        tests:
+          - not_null
+
+  - name: stg_crm__consentimientos
+    description: "Registro de consentimientos legales. La columna is_consiente mapea S->True, N->False."
+    columns:
+      - name: is_consiente
+        tests:
+          - accepted_values:
+              values: [true, false]
+
+  # ==========================================
+  # STAGING ERP
+  # ==========================================
+  - name: stg_erp__articulos
+    description: "Catálogo de artículos. Activo mapeado a Booleano y Coste a Numérico."
+    columns:
+      - name: erp_articulo_id
+        tests:
+          - unique
+          - not_null
+      - name: is_activo
+        tests:
+          - accepted_values:
+              values: [true, false]
+
+  - name: stg_erp__pedidos
+    description: "Pedidos registrados en el ERP."
+    columns:
+      - name: erp_pedido_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_erp__pedido_lineas
+    description: "Detalle de líneas de pedido del ERP."
+    columns:
+      - name: erp_pedido_id
+        tests:
+          - not_null
+      - name: linea_id
+        tests:
+          - not_null
+
+  - name: stg_erp__envios
+    description: "Información logística de envíos."
+    columns:
+      - name: envio_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_erp__cuentas_clientes
+    description: "Datos fiscales de las cuentas de cliente en el ERP."
+    columns:
+      - name: erp_cuenta_cliente_id
+        tests:
+          - unique
+          - not_null
+
+  # ==========================================
+  # STAGING POS
+  # ==========================================
+  - name: stg_pos__clientes
+    description: "Clientes registrados en el punto de venta."
+    columns:
+      - name: pos_cliente_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_pos__pedidos
+    description: "Cabeceras de pedidos del POS."
+    columns:
+      - name: pos_pedido_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_pos__pedido_lineas
+    description: "Líneas de detalle de ventas del POS."
+    columns:
+      - name: pos_pedido_id
+        tests:
+          - not_null
+
+  - name: stg_pos__pagos
+    description: "Transacciones de pago vinculadas a pedidos."
+    columns:
+      - name: pago_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_pos__direcciones
+    description: "Direcciones de envío y facturación."
+    columns:
+      - name: pos_direccion_id
+        tests:
+          - unique
+          - not_null
+
+  # ==========================================
+  # STAGING WEB
+  # ==========================================
+  - name: stg_web__eventos
+    description: "Logs de interacciones de usuario en la web."
+    columns:
+      - name: evento_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_web__sesiones
+    description: "Agrupación de eventos por sesión de navegación."
+    columns:
+      - name: sesion_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_web__productos
+    description: "Datos de productos para el catálogo web."
+    columns:
+      - name: sku
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_web__categorias
+    description: "Jerarquía de categorías web."
+    columns:
+      - name: categoria_id
+        tests:
+          - unique
+          - not_null

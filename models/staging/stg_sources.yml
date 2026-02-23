@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: "Tablas crudas cargadas manualmente en Snowflake (Capa Bronze)"
+    database: PIPELINE_DB
+    schema: BRONZE
+    tables:
+      # --- POS / Checkout ---
+      - name: BRZ_POS_PEDIDO
+        description: "Cabeceras de pedidos del sistema de punto de venta"
+      - name: BRZ_POS_PEDIDO_LINEA
+        description: "Detalle de líneas de pedido del POS"
+      - name: BRZ_POS_PAGO
+        description: "Transacciones de pago realizadas"
+      - name: BRZ_POS_CLIENTE
+        description: "Datos maestros de clientes desde el POS"
+      - name: BRZ_POS_DIRECCION
+        description: "Direcciones de envío y facturación de clientes"
+
+      # --- ERP ---
+      - name: BRZ_ERP_PEDIDO
+        description: "Pedidos registrados en el sistema ERP"
+      - name: BRZ_ERP_PEDIDO_LINEA
+        description: "Líneas de pedido integradas en el ERP"
+      - name: BRZ_ERP_ARTICULO
+        description: "Catálogo maestro de artículos del ERP"
+      - name: BRZ_ERP_STOCK_FOTO
+        description: "Instantáneas de stock por almacén"
+      - name: BRZ_ERP_ENVIO
+        description: "Información logística y estados de envío"
+      - name: BRZ_ERP_CUENTA_CLIENTE
+        description: "Datos fiscales y de facturación del ERP"
+
+      # --- CRM ---
+      - name: BRZ_CRM_CONTACTO
+        description: "Fichas de contacto maestras del CRM"
+      - name: BRZ_CRM_CONSENTIMIENTO
+        description: "Historial de consentimientos legales (GDPR)"
+
+      # --- WEB ---
+      - name: BRZ_WEB_SESION
+        description: "Sesiones de navegación de usuarios en la web"
+      - name: BRZ_WEB_EVENTO
+        description: "Interacciones de usuarios (clicks, vistas, búsquedas)"
+      - name: BRZ_WEB_PRODUCTO
+        description: "Catálogo de productos tal cual se muestra en la web"
+      - name: BRZ_WEB_CATEGORIA
+        description: "Jerarquía de categorías del sitio web"
