@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_odoo__customers
+    description: "Clientes únicos extraídos de los pedidos"
+  - name: stg_odoo__orders
+    description: "Pedidos limpios"
+  - name: stg_odoo__payment_methods
+    description: "Métodos de pago detectados"
+  - name: stg_odoo__payments
+    description: "Transacciones de pagos"

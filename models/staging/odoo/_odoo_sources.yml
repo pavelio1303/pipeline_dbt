@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: odoo_raw
+    database: PIPELINE_DB
+    schema: BRONZE
+    tables:
+      - name: RAW_ORDERS
+      - name: RAW_PAYMENTS
+      - name: RAW_WEB_EVENTS
