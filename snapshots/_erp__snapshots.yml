@@ -1,0 +1,17 @@
+snapshots:
+  - name: envios_snapshot
+    relation: ref('stg_erp__envios')
+    config:
+      strategy: check
+      # En stg_erp__envios lo renombramos a envio_id
+      unique_key: envio_id
+      # En stg_erp__envios lo renombramos a estado_envio (en minúsculas/standard)
+      check_cols: ['estado_envio']
+
+  - name: envios_snapshot_timestmp
+    relation: ref('stg_erp__envios')
+    config:
+      strategy: timestamp
+      unique_key: envio_id
+      # En stg_erp__envios lo renombramos a enviado_at
+      updated_at: enviado_at

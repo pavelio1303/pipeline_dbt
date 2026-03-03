@@ -29,6 +29,10 @@ sources:
         description: "Instantáneas de stock por almacén"
       - name: BRZ_ERP_ENVIO
         description: "Información logística y estados de envío"
+        # freshness:
+        #     warn_after: {count: 3, period: day}
+        #     error_after: {count: 7, period: day}
+        # loaded_at_field: "CAST(fecha_hora_envio AS TIMESTAMP)"
       - name: BRZ_ERP_CUENTA_CLIENTE
         description: "Datos fiscales y de facturación del ERP"
 
